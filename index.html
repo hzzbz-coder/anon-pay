@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pay 199 USD → USDT (ERC20)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%; width: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="swapsFrame" src="https://swaps.app/embed" allow="payment *"></iframe>
+  <script>
+    const message = {
+      type: "buy",
+      fiat: "USD",
+      crypto: "USDT",
+      network: "ERC20",
+      amount: 199,
+      address: "0x36135005a74e3d1a5f5acb5697bd6fdb2f1b36c8"
+    };
+
+    const iframe = document.getElementById("swapsFrame");
+    iframe.onload = () => {
+      setTimeout(() => {
+        iframe.contentWindow.postMessage(message, "*");
+      }, 1000);
+    };
+  </script>
+</body>
+</html>
